@@ -27,7 +27,7 @@ $("#add-muppet").on("click", function (event) {
 $(".muppet").on("click", function () {
     var muppet = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        muppet + "&api_key=wau4sqWaddH5GCQRp2uEYDISN9tXzgMB&limit=10";
+        muppet.split(' ').join('%20') + "&api_key=wau4sqWaddH5GCQRp2uEYDISN9tXzgMB&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -43,12 +43,32 @@ $(".muppet").on("click", function () {
             var gifDiv = $("<div>");
             var p = $("<p>").text("Rating: " + results[i].rating);
             var muppetImage = $("<img>");
-            muppetImage.attr("src", results[i].images.fixed_height.url);
+            muppetImage.attr("src", results[i].images.fixed_height_still.url);
+            muppetImage.attr("data-still", results[i].images.fixed_height_still.url);
+            muppetImage.attr("data-animate", results[i].images.fixed_height.url);
+            muppetImage.addClass("starter");
+            muppetImage.attr("data-state", "still");
 
             gifDiv.append(p);
             gifDiv.append(muppetImage);
+            gifDiv.addClass("holder");
 
             $("#gifs").prepend(gifDiv);
         }
+
+
+        $(".starter").on("click", function () {
+            var state = $(this).attr("data-state");
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
+        });
+
     });
 })
+
+
