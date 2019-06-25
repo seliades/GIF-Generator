@@ -15,30 +15,32 @@
 
 <body>
     <div class="container">
-        <div class="row bg-primary header">
-            <div class="col-12 text-light">
-                <h1 class="text-center">Muppets GIF Generator</h1>
-                <h5 class="text-center">Press a button or search for your favorite Muppet!</p>
+        <div class="wrapper">
+        <div class="row header">
+            <div class="col-12">
+                <h1 class="text-center top-text">Muppets GIF Generator</h1>
+                <h5 class="text-center bottom-text">Press a button or search for your favorite Muppet!</p>
             </div>
         </div>
-        <br>
+       
         <div class="row">
             <div class="col-4" id="search">
                 <form id="gif-form">
-                    <label for="muppet-input">Add Another Muppet</label>
+                    <label class="label" for="muppet-input">Add Another Muppet</label>
                     <input type="text" id="muppet-input"><br>
 
-                    <!-- Button triggers new movie to be added -->
                     <input id="add-muppet" type="submit" value="Add Muppet">
                 </form>
             </div>
-
+        
             <div class="col-8" id="buttons"></div>
         </div>
+    
         <br>
         <div class="row">
             <div class="col-12" id="gifs"></div>
         </div>
+    </div>
     </div>
 
     <script src="assets/javascript/app.js"></script>

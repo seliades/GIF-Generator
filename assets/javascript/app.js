@@ -5,7 +5,6 @@ function random(min, max) {
 }
 
 function renderButtons() {
-    $("#buttons").empty();
     for (var i = 0; i < muppets.length; i++) {
         var a = $("<button>");
         a.addClass("muppet");
@@ -20,14 +19,17 @@ $("#add-muppet").on("click", function (event) {
     event.preventDefault();
     var muppet = $("#muppet-input").val().trim();
     muppets.push(muppet);
+    console.log(muppets);
+    $("#buttons").empty();
     renderButtons();
     $("#muppet-input").val("");
 });
 
-$(".muppet").on("click", function () {
-    var muppet = $(this).attr("data-name");
+$("body").on("click", ".muppet", function () {
+    var muppet2 = $(this).attr("data-name");
+    console.log(muppet2);
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        muppet.split(' ').join('%20') + "&api_key=wau4sqWaddH5GCQRp2uEYDISN9tXzgMB&limit=10";
+        muppet2.split(' ').join('%20') + "&api_key=wau4sqWaddH5GCQRp2uEYDISN9tXzgMB&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -41,8 +43,10 @@ $(".muppet").on("click", function () {
         for (var i = 0; i < results.length; i++) {
 
             var gifDiv = $("<div>");
-            var p = $("<p>").text("Rating: " + results[i].rating);
+            
+            var p = $("<h5>").text("Title: " + results[i].title);
             var muppetImage = $("<img>");
+            var q = $("<p>").text("Rating: " + results[i].rating);
             muppetImage.attr("src", results[i].images.fixed_height_still.url);
             muppetImage.attr("data-still", results[i].images.fixed_height_still.url);
             muppetImage.attr("data-animate", results[i].images.fixed_height.url);
@@ -51,6 +55,7 @@ $(".muppet").on("click", function () {
 
             gifDiv.append(p);
             gifDiv.append(muppetImage);
+            gifDiv.append(q);
             gifDiv.addClass("holder");
 
             $("#gifs").prepend(gifDiv);

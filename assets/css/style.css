@@ -2,3 +2,28 @@
     float: left;
     margin: 5px;
 }
+
+.muppet {
+    margin: 1px;
+}
+
+.wrapper {
+background-image: url("../images/vector-muppets-backgrounds.jpg");
+margin: 10px 0px 10px 0px;
+padding: 0px 10px 10px 10px;
+}
+
+.top-text {
+    margin-top: 0px;
+}
+.bottom-text {
+    margin-top: -10px;
+}
+
+.label{
+    font-weight: 600;
+}
+
+body{
+    background-color: #6699ff;
+}
