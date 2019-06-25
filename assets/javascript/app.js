@@ -1,4 +1,4 @@
-var muppets = ["Cookie Monster", "Fozzy Bear", "Elmo", "Oscar the Grouch", "Kermit the Frog", "Big Bird", "Miss Piggy", "Grover", "Statler and Waldorf", "Bert and Ernie"];
+var muppets = ["Cookie Monster", "Fozzy Bear", "Elmo", "Oscar the Grouch", "Kermit the Frog", "Gonzo", "Miss Piggy", "Grover", "Statler and Waldorf", "Bert and Ernie"];
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -43,7 +43,7 @@ $("body").on("click", ".muppet", function () {
         for (var i = 0; i < results.length; i++) {
 
             var gifDiv = $("<div>");
-            
+
             var p = $("<h5>").text("Title: " + results[i].title);
             var muppetImage = $("<img>");
             var q = $("<p>").text("Rating: " + results[i].rating);
@@ -60,20 +60,18 @@ $("body").on("click", ".muppet", function () {
 
             $("#gifs").prepend(gifDiv);
         }
-
-
-        $(".starter").on("click", function () {
-            var state = $(this).attr("data-state");
-            if (state === "still") {
-                $(this).attr("src", $(this).attr("data-animate"));
-                $(this).attr("data-state", "animate");
-            } else {
-                $(this).attr("src", $(this).attr("data-still"));
-                $(this).attr("data-state", "still");
-            }
-        });
-
     });
 })
+
+$("body").on("click", ".starter", function () {
+    var state = $(this).attr("data-state");
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+});
 
 
