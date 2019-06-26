@@ -19,7 +19,6 @@ $("#add-muppet").on("click", function (event) {
     event.preventDefault();
     var muppet = $("#muppet-input").val().trim();
     muppets.push(muppet);
-    console.log(muppets);
     $("#buttons").empty();
     renderButtons();
     $("#muppet-input").val("");
@@ -27,7 +26,6 @@ $("#add-muppet").on("click", function (event) {
 
 $("body").on("click", ".muppet", function () {
     var muppet2 = $(this).attr("data-name");
-    console.log(muppet2);
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         muppet2.split(' ').join('%20') + "&api_key=wau4sqWaddH5GCQRp2uEYDISN9tXzgMB&limit=10";
 

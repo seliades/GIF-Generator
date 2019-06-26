@@ -1,6 +1,7 @@
 .holder {
     float: left;
     margin: 5px;
+    background-color:rgba(228, 241, 208, 0.76);
 }
 
 .muppet {
@@ -8,16 +9,9 @@
 }
 
 .wrapper {
-background-image: url("../images/vector-muppets-backgrounds.jpg");
+    background-color:rgba(228, 241, 208, 0.83);
 margin: 10px 0px 10px 0px;
 padding: 0px 10px 10px 10px;
-}
-
-.top-text {
-    margin-top: 0px;
-}
-.bottom-text {
-    margin-top: -10px;
 }
 
 .label{
@@ -26,4 +20,9 @@ padding: 0px 10px 10px 10px;
 
 body{
     background-color: #6699ff;
+    background-image: url("../images/vector-muppets-backgrounds.jpg");
+}
+
+p {
+    font-weight: 600;
 }
